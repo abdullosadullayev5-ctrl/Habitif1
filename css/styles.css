@@ -180,6 +180,10 @@ img {
 
 .main-content {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 36px 0;
 }
 
 .glass-card {
@@ -190,14 +194,21 @@ img {
   box-shadow: var(--shadow);
 }
 
-.auth-screen, .dashboard-screen {
-  display: grid;
+.auth-screen,
+.dashboard-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 180px);
+  width: 100%;
 }
 
 .auth-panel {
-  max-width: 520px;
+  width: 100%;
+  max-width: 560px;
+  min-width: 320px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 36px;
   display: grid;
   gap: 24px;
 }
@@ -300,6 +311,8 @@ img {
 
 .google-btn {
   gap: 12px;
+  width: 100%;
+  justify-content: center;
 }
 
 .google-icon {
@@ -331,12 +344,15 @@ img {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 24px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .dashboard-card {
@@ -364,6 +380,7 @@ img {
   justify-content: space-between;
   gap: 16px;
   align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .card-header h3 {
