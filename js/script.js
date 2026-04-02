@@ -157,14 +157,10 @@ const elements = {
   languageSelector: document.getElementById('languageSelector'),
   authScreen: document.getElementById('authScreen'),
   dashboardScreen: document.getElementById('dashboardScreen'),
-  loginTab: document.getElementById('loginTab'),
-  signupTab: document.getElementById('signupTab'),
-  nameGroup: document.getElementById('nameGroup'),
   authTitle: document.getElementById('authTitle'),
   authSubtitle: document.getElementById('authSubtitle'),
   authSubmit: document.getElementById('authSubmit'),
   authForm: document.getElementById('authForm'),
-  fullName: document.getElementById('fullName'),
   emailInput: document.getElementById('emailInput'),
   passwordInput: document.getElementById('passwordInput'),
   googleLogin: document.getElementById('googleLogin'),
@@ -248,14 +244,11 @@ function translate(key) {
 
 function applyTranslations() {
   const dictionary = translations[currentLang];
-  elements.authTitle.textContent = currentMode === 'login' ? dictionary.authTitle : dictionary.authTitle;
-  elements.authSubtitle.textContent = currentMode === 'login' ? dictionary.authHeroLogin : dictionary.authHeroSignup;
-  elements.loginTab.textContent = dictionary.loginTab;
-  elements.signupTab.textContent = dictionary.signupTab;
+  elements.authTitle.textContent = dictionary.authTitle;
+  elements.authSubtitle.textContent = dictionary.authHeroLogin;
   document.getElementById('emailLabel').textContent = dictionary.emailLabel;
   document.getElementById('passwordLabel').textContent = dictionary.passwordLabel;
-  document.getElementById('nameLabel').textContent = dictionary.nameLabel;
-  elements.authSubmit.textContent = currentMode === 'login' ? dictionary.authSubmit_login : dictionary.authSubmit_signup;
+  elements.authSubmit.textContent = dictionary.authSubmit_login;
   elements.googleLogin.querySelector('#googleText').textContent = dictionary.googleText;
   document.getElementById('welcomeLabel').textContent = dictionary.welcomeLabel;
   document.getElementById('progressLabel').textContent = dictionary.progressLabel;
@@ -277,17 +270,6 @@ function applyTranslations() {
   elements.habitGoal.placeholder = goalPlaceholder;
   const buyPremiumText = dictionary.buyPremium || 'Buy';
   elements.buyPremium.textContent = buyPremiumText;
-  if (!currentUser) {
-    document.getElementById('authTitle').textContent = currentMode === 'login' ? dictionary.authTitle : dictionary.authTitle;
-  }
-}
-
-function showTab(mode) {
-  currentMode = mode;
-  elements.loginTab.classList.toggle('active', mode === 'login');
-  elements.signupTab.classList.toggle('active', mode === 'signup');
-  elements.nameGroup.hidden = mode !== 'signup';
-  applyTranslations();
 }
 
 function showScreen(auth) {
@@ -397,7 +379,6 @@ function saveCurrentUser() {
 
 function handleAuthSubmit(event) {
   event.preventDefault();
-  const name = elements.fullName.value.trim();
   const email = elements.emailInput.value.trim().toLowerCase();
   const password = elements.passwordInput.value;
   if (currentMode === 'signup') {
@@ -541,7 +522,6 @@ function logout() {
   clearSession();
   currentUser = null;
   showScreen(true);
-  showTab('login');
   showToast(translations[currentLang].toastLoggedOut);
 }
 
@@ -552,8 +532,6 @@ function initEvents() {
   elements.languageSelector.addEventListener('change', (event) => {
     setLanguage(event.target.value);
   });
-  elements.loginTab.addEventListener('click', () => showTab('login'));
-  elements.signupTab.addEventListener('click', () => showTab('signup'));
   elements.authForm.addEventListener('submit', handleAuthSubmit);
   elements.googleLogin.addEventListener('click', handleGoogleLogin);
   elements.habitForm.addEventListener('submit', addHabit);
