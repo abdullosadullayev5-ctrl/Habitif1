@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitify - Premium Habit Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">H</div>
+        <div>
+          <h1>Habitify</h1>
+          <p class="brand-subtitle">Premium habit tracker</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <div class="control-item switch-control" id="themeToggle">
+          <span id="themeIcon">🌙</span>
+          <div class="switch">
+            <input type="checkbox" id="themeSwitch" />
+            <label for="themeSwitch"></label>
+          </div>
+        </div>
+        <div class="control-item lang-control">
+          <select id="languageSelector" aria-label="Language selector">
+            <option value="en">EN</option>
+            <option value="uz">UZ</option>
+            <option value="ru">RU</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="auth-screen" id="authScreen">
+        <div class="auth-panel glass-card">
+          <div class="auth-hero">
+            <h2 id="authTitle">Sign in to Habitify</h2>
+            <p id="authSubtitle">Track habits, earn coins, and level up your routine.</p>
+          </div>
+          <div class="auth-tabs">
+            <button class="tab-btn active" data-mode="login" id="loginTab">Login</button>
+            <button class="tab-btn" data-mode="signup" id="signupTab">Sign Up</button>
+          </div>
+
+          <form class="auth-form" id="authForm">
+            <div class="form-group" id="nameGroup" hidden>
+              <label for="fullName" id="nameLabel">Full name</label>
+              <input type="text" id="fullName" placeholder="Alex Johnson" />
+            </div>
+            <div class="form-group">
+              <label for="emailInput" id="emailLabel">Email</label>
+              <input type="email" id="emailInput" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="passwordInput" id="passwordLabel">Password</label>
+              <input type="password" id="passwordInput" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn btn-primary" id="authSubmit">Login</button>
+          </form>
+
+          <div class="divider"><span id="orText">or continue with</span></div>
+          <button class="btn btn-outline google-btn" id="googleLogin">
+            <span class="google-icon">G</span>
+            <span id="googleText">Continue with Google</span>
+          </button>
+          <p class="auth-note" id="authNote">No account yet? Create one in seconds.</p>
+        </div>
+      </section>
+
+      <section class="dashboard-screen" id="dashboardScreen" hidden>
+        <div class="dashboard-grid">
+          <section class="dashboard-card stats-card glass-card">
+            <div class="stats-header">
+              <div>
+                <p class="subtitle" id="welcomeLabel">Welcome back,</p>
+                <h2 id="welcomeName">Habit Hero</h2>
+              </div>
+              <button class="btn btn-secondary" id="logoutBtn">Logout</button>
+            </div>
+            <div class="stats-list">
+              <div class="stat-item">
+                <span>Coins</span>
+                <strong id="coinCounter">0</strong>
+              </div>
+              <div class="stat-item">
+                <span>Habits</span>
+                <strong id="habitCount">0</strong>
+              </div>
+              <div class="stat-item">
+                <span>Streak</span>
+                <strong id="streakCount">0</strong>
+              </div>
+            </div>
+            <div class="progress-block">
+              <p id="progressLabel">Daily streak progress</p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="dashboard-card add-habit-card glass-card">
+            <div class="card-header">
+              <h3 id="addHabitTitle">Add New Habit</h3>
+              <span class="badge" id="dailyReward">+50 coins / completed</span>
+            </div>
+            <form id="habitForm" class="habit-form">
+              <label for="habitTitle" id="habitLabel">Habit Name</label>
+              <input id="habitTitle" placeholder="Drink water" required />
+              <label for="habitGoal" id="goalLabel">Goal</label>
+              <input id="habitGoal" placeholder="e.g. 30 days" />
+              <button type="submit" class="btn btn-primary" id="addHabitBtn">Add Habit</button>
+            </form>
+          </section>
+
+          <section class="dashboard-card habits-list-card glass-card">
+            <div class="card-header">
+              <h3 id="habitsTitle">Your Habits</h3>
+              <p id="habitsSubtitle">Track progress and complete daily tasks.</p>
+            </div>
+            <ul class="habit-list" id="habitList"></ul>
+          </section>
+
+          <section class="dashboard-card shop-card glass-card">
+            <div class="card-header">
+              <h3 id="shopTitle">Shop</h3>
+              <p id="shopSubtitle">Unlock premium features with coins.</p>
+            </div>
+            <div class="shop-item">
+              <div>
+                <h4>Premium Access</h4>
+                <p id="premiumDesc">Lifetime habit mastery mode.</p>
+              </div>
+              <div class="shop-action">
+                <span class="price">2000</span>
+                <button class="btn btn-primary" id="buyPremium">Buy</button>
+              </div>
+            </div>
+            <div class="shop-tip" id="shopTip">Premium gives you advanced tracking and exclusive dark theme animation.</div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
