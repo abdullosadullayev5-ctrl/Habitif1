@@ -162,7 +162,6 @@ const elements = {
   nameGroup: document.getElementById('nameGroup'),
   authTitle: document.getElementById('authTitle'),
   authSubtitle: document.getElementById('authSubtitle'),
-  authNote: document.getElementById('authNote'),
   authSubmit: document.getElementById('authSubmit'),
   authForm: document.getElementById('authForm'),
   fullName: document.getElementById('fullName'),
@@ -257,9 +256,7 @@ function applyTranslations() {
   document.getElementById('passwordLabel').textContent = dictionary.passwordLabel;
   document.getElementById('nameLabel').textContent = dictionary.nameLabel;
   elements.authSubmit.textContent = currentMode === 'login' ? dictionary.authSubmit_login : dictionary.authSubmit_signup;
-  document.getElementById('orText').textContent = dictionary.orText;
   elements.googleLogin.querySelector('#googleText').textContent = dictionary.googleText;
-  elements.authNote.textContent = currentMode === 'login' ? dictionary.authNote_login : dictionary.authNote_signup;
   document.getElementById('welcomeLabel').textContent = dictionary.welcomeLabel;
   document.getElementById('progressLabel').textContent = dictionary.progressLabel;
   elements.addHabitTitle.textContent = dictionary.addHabitTitle;
